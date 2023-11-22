@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="hero">
+        <div class="row container">
+            <div class="col" style="text-align: center">
+                <h1>Store_MVC</h1>
+                <span>Proyecto de prueba para el stack de django</span>
+                <button type="button" class="btn btn-primary">Primary</button>
+                <button type="button" class="btn btn-primary">Primary</button>
+            </div>
+            <div class="col">
+                FOTOSOOOOS
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% if stores %}
+            {% for store in stores %}
+                {% include 'st_mvc/parts/store.html' %}
+            {% endfor %}
+            <a href="{% url 'st_mvc:store_list' %}">Ver mas -></a>
+        {% else %}
+            <h3> No tenemos tiendas disponibles por el momento </h3>
+        {% endif %}
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+

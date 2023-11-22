@@ -1,0 +1,10 @@
+<div class="store">
+    <p>{{ store.name }}</p>
+    <p>{{ store.dir }}</p>
+    {% for category in store.category.all %}
+        <span class="badge bg-secondary">{{ category }}</span>
+    {% endfor %}
+    <a href="{% url 'st_mvc:store_update' store.id %}" style="display: block" class="btn btn-warning">Modificar</a>
+    <a href="{% url 'st_mvc:store_delete' store.id %}" style="display: block" class="btn btn-danger">Eliminar Pagina</a>
+    <a href="{% url 'st_mvc:store_delete_modal' store.id %}" style="display: block" class="btn btn-danger">Eliminar Modal</a>
+</div>

@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <form method="post">{% csrf_token %}
+            <p>Está seguro que desea eliminar el elemento "{{ object }}"?</p>
+            <input type="submit" class="btn btn-danger" value="Eliminar">
+            <a href="{% url 'st_mvc:store_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+{% endblock %}

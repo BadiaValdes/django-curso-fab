@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="container">
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }} - {{ message.tags }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+        <div class="row justify-content-evenly gy-4">
+            {% for store in object_list %}
+                {% include 'st_mvc/parts/store.html' %}
+            {% endfor %}
+            <h3> {{ extra_text }} </h3>
+        </div>
+
+        {% include 'st_mvc/extra/cats.html' %}
+
+
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
