@@ -1,6 +1,6 @@
 {% extends 'form_obj3/index_form.html' %}
 {% load static %}
-
+{% load crispy_forms_tags %}
 
 
 {% block forms %}
@@ -16,12 +16,6 @@
     {% endif %}
     <form action="{% url 'st_mvc:form_by_model' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
-        {{ form.as_p }}
-    <div class="row-cols-6">
-         <button type="submit" class="btn btn-success">Enviar</button>
-        <a class="btn btn-danger" href="{% url 'st_mvc:forms' %}">Cancelar</a>
-    </div>
-
+        {% crispy form %}
     </form>
 {% endblock forms %}

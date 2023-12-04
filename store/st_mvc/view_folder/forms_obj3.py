@@ -75,7 +75,7 @@ def form_class_model(request, *args, **kwargs):
         context['welcome'] = "Formulario Por Modelo - GET"
     elif request.method == METHODS['POST']:
         print(request.POST)
-        form = VideoGamesForm(request.POST)
+        form = VideoGamesForm(request.POST, request.FILES)
         if form.is_valid():
             context['welcome'] = "Formulario Por Modelo - POST"
         else:
