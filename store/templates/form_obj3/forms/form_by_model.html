@@ -1,0 +1,27 @@
+{% extends 'form_obj3/index_form.html' %}
+{% load static %}
+
+
+
+{% block forms %}
+    <h4> {{ welcome }} </h4>
+     {% if form.errors %}
+       {% for field in form %}
+           {% for error in field.errors %}
+              <div class="alert alert-danger">
+                   <strong>{{ error|escape }}</strong>
+              </div>
+           {% endfor %}
+       {% endfor %}
+    {% endif %}
+    <form action="{% url 'st_mvc:form_by_model' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+    <div class="row-cols-6">
+         <button type="submit" class="btn btn-success">Enviar</button>
+        <a class="btn btn-danger" href="{% url 'st_mvc:forms' %}">Cancelar</a>
+    </div>
+
+    </form>
+{% endblock forms %}

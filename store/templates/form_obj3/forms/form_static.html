@@ -1,0 +1,38 @@
+{% extends 'form_obj3/index_form.html' %}
+{% load static %}
+
+
+
+{% block forms %}
+    <h4> {{ welcome }} </h4>
+    <form action="{% url 'st_mvc:form_basico' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if error_messages %}
+            {% for error_message in error_messages %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error_message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Encabezado</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Titulo">
+            <span id="passwordHelpBlock" class="form-text">
+              No introduzca más de 5 caracteres
+            </span>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+            <span id="passwordHelpBlock" class="form-text">
+              No comience con minúscula su mensaje
+            </span>
+        </div>
+        <div class="row-cols-6">
+            <button type="submit" class="btn btn-success">Enviar</button>
+            <a class="btn btn-danger" href="{% url 'st_mvc:forms' %}">Cancelar</a>
+        </div>
+
+    </form>
+{% endblock forms %}

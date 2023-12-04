@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container">
+    <h3>Zona para trabajar con formularios</h3>
+    <p> Esta zona está dedicada a mostrar las distintas formas que tenemos para utilizar formularios.</p>
+
+
+    {% block forms %}
+
+
+   {% for form in forms %}
+
+            <a href="{% url form.url %}" class="btn btn-primary">{{ form.name }}</a>
+
+        {% empty %}
+            <p>No data</p>
+
+        {% endfor %}
+
+        {% if form_data %}
+            <p>Titulo: {{ form_data.title }}</p>
+            <p>Mensaje: {{ form_data.message }}</p>
+        {% endif %}
+
+    {% endblock forms %}
+    </div>
+{% endblock %}
