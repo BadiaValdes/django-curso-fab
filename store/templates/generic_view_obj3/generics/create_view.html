@@ -1,0 +1,21 @@
+{% extends 'generic_view_obj3/index_generic.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block generic %}
+    <form   method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% crispy form %}
+    </form>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+

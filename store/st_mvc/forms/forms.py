@@ -47,7 +47,7 @@ class VideoGamesForm(forms.ModelForm):
 
     class Meta:
         model = VideoGames  # Modelo a utilizar en el formulario
-        fields = ('image', 'description', 'rate', 'category')  # Campos a mostrar, Ojo el orden importa
+        fields = ('name', 'image', 'description', 'rate', 'category')  # Campos a mostrar, Ojo el orden importa
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -61,12 +61,17 @@ class VideoGamesForm(forms.ModelForm):
                 Column(F('category'))
             ),
             Row(
-                Column(F('description'))
+                Column(F('description')),
+                Column(F('name')),
             ),
                 Column(
                     Submit("create_store", "Enviar", css_class='btn-success button-form'),  # id. Nombre.
-                    HTML('<a href="{% url "st_mvc:forms" %}" class="btn btn-danger button-form"> Cancelar </a> '),
+                    HTML('<a href="{% url "st_mvc:generic" %}" class="btn btn-danger button-form"> Cancelar </a> '),
                     css_class='button-form'
             ))
+    def clean(self):
+        # Se ejecuta cuando recibe el formulario
+        print("3")
+
 
 

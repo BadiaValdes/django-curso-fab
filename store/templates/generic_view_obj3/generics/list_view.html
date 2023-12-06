@@ -1,0 +1,26 @@
+{% extends 'generic_view_obj3/index_generic.html' %}
+{% load static %}
+
+
+{% block generic %}
+    <div class="d-flex flex-row gap-2 pt-5">
+        {% for video_game in object_list %}
+            <div class="card" style="width: 18rem;">
+                <img src="/media/{{ video_game.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ video_game.name }}</h5>
+                    <p class="card-text">{{ video_game.description }}</p>
+                    <a href="#" class="btn btn-primary">{{ video_game.rate }}</a>
+                </div>
+                <div class="card-footer d-flex flex-column gap-1">
+                    <span class="badge bg-secondary">{{ video_game.category.name }}</span>
+                    <div class="d-flex flex-row gap-1 justify-content-between align-content-center">
+                        <a href="{% url 'st_mvc:generic_update' video_game.id %}" class="btn btn-primary">Modifivar</a>
+                        <a href="{% url 'st_mvc:generic_detail' video_game.id %}" class="btn btn-secondary">Ver</a>
+                        <a href="{% url 'st_mvc:generic_delete' video_game.id %}" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock generic %}

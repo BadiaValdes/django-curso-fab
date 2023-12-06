@@ -1,0 +1,24 @@
+{% extends 'generic_view_obj3/index_generic.html' %}
+{% load static %}
+
+{% block generic %}
+<div class="card justify-content-center align-content-center" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img style="height: 100%; width: 100%" src="/media/{{ object.image }}" class="img-fluid" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body d-flex flex-column gap-1 align-content-center justify-content-start">
+        <h5 class="card-title">{{ object.name }}</h5>
+          <p>Descripción</p>
+        <p class="card-text">{{ object.description }}</p>
+        <p class="card-text">Rate</p>
+        <p class="badge bg-secondary">{{ object.rate }}</p>
+          <p class="card-text">Categoria</p>
+        <p class="badge bg-secondary">{{ object.category }}</p>
+          <a class="btn btn-primary" href="{% url 'st_mvc:generic' %}">Regresar</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock generic %}
